@@ -2,17 +2,21 @@ library(ggplot2)
 library(ggpubr)
 
 my_fun <- function(t){
-  Y = t + 7 + 3*sin(t)
+  Y = t + 7 + 3*sin(t) + 0.14
   return(Y)
 }
 
 t <- seq(0,49,1)
 y1 <- my_fun(t)
 
-Y = matrix(c(t,y), byrow = F, ncol = 2)
+Y = matrix(c(t,y1), byrow = F, ncol = 2)
 Y
 data <- data.frame(Y)
 colnames(data) <- c("t", "Y")
+
+
+write.csv(data, "data.csv", row.names = F)
+
 
 
 m <- seq(0,49, pi)
